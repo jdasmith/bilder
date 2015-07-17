@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# Version and build information for docutils
-# Pure Python package
+# Build information for docutils
 #
 # $Id$
 #
@@ -9,20 +8,25 @@
 
 ######################################################################
 #
-# Version
+# Trigger variables set in docutils_aux.sh
 #
 ######################################################################
 
-DOCUTILS_BLDRVERSION=${DOCUTILS_BLDRVERSION:-"0.8.1"}
+mydir=`dirname $BASH_SOURCE`
+source $mydir/docutils_aux.sh
 
 ######################################################################
 #
-# Other values
+# Set variables that should trigger a rebuild, but which by value change
+# here do not, so that build gets triggered by change of this file.
+# E.g: mask
 #
 ######################################################################
 
-DOCUTILS_BUILDS=${DOCUTILS_BUILDS:-"pycsh"}
-DOCUTILS_DEPS=
+setDocutilsNonTriggerVars() {
+  DOCUTILS_UMASK=002
+}
+setDocutilsNonTriggerVars
 
 ######################################################################
 #

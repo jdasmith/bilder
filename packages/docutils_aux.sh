@@ -15,21 +15,21 @@
 #
 ######################################################################
 
-setSetuptoolsTriggerVars() {
-  SETUPTOOLS_BLDRVERSION_STD=${SETUPTOOLS_BLDRVERSION_STD:-"5.2"}
-  SETUPTOOLS_BLDRVERSION_EXP=${SETUPTOOLS_BLDRVERSION_EXP:-"18.0.1"}
-  SETUPTOOLS_BUILDS=${SETUPTOOLS_BUILDS:-"pycsh"}
-  SETUPTOOLS_DEPS=Python
+setDocutilsTriggerVars() {
+  DOCUTILS_BLDRVERSION_STD=${DOCUTILS_BLDRVERSION_STD:-"0.8.1"}
+  DOCUTILS_BLDRVERSION_EXP=${DOCUTILS_BLDRVERSION_EXP:-"0.12"}
+  DOCUTILS_BUILDS=${DOCUTILS_BUILDS:-"pycsh"}
+  DOCUTILS_DEPS=Python
 }
-setSetuptoolsTriggerVars
+setDocutilsTriggerVars
 
 ######################################################################
 #
-# Find setuptools
+# Find docutils
 #
 ######################################################################
 
-findSetuptools() {
+findDocutils() {
   :
 }
 
