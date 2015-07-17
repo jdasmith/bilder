@@ -1,0 +1,152 @@
+#!/bin/bash
+#
+# $Id: cygwin.vs11_ifort13 263 2013-07-11 19:40:01Z jrood $
+#
+# Define variables.
+# Do not override existing definitions.
+# Put any comments between the first block starting with '# KEEP THIS'
+# and ending with '# END KEEP THIS'
+#
+######################################################################
+
+# KEEP THIS
+
+# When running cmake, this must be in the front of the path to
+# get the native Windows cmake.
+#SVN_BINDIR="C:/Program Files/CollabNet/Subversion Client"
+USE_CCXX_PIC_FLAG=${USE_CCXX_PIC_FLAG:-"false"}
+USE_FORTRAN_PIC_FLAG=${USE_FORTRAN_PIC_FLAG:-"false"}
+
+HAVE_SER_FORTRAN=true
+
+VISUALSTUDIO_VERSION=11
+QMAKESPECARG="-spec win32-msvc2012"
+if test -z "$BILDER_DIR"; then
+  mdir=`dirname $BASH_SOURCE`
+  mdir=`(cd $mdir; pwd -P)`
+  bdir=`dirname $mdir`
+  BILDER_DIR=`(cd $bdir; pwd -P)`
+fi
+cmd="source $BILDER_DIR/machines/cygwin.vs"
+echo $cmd
+$cmd
+
+HAVE_SER_FORTRAN=true
+
+# this is for petsc33 to link with Intel lapack library (MKL)
+export LINK_WITH_MKL="true"
+
+#############################################################################
+
+export MKLROOT="C:\Program Files (x86)\Intel\Composer XE 2013\mkl"
+export WIN_TITLE="Intel Composer XE 2013  Intel(R) 64 Visual Studio 2012"
+export PRODUCT_NAME="Intel Composer XE 2013 "
+export BUNDLE_NAME="Intel(R) Parallel Studio XE 2013"
+export VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio 11.0"
+export CCP_LIB64="C:\Program Files\Microsoft HPC Pack 2008 SDK\Lib\amd64"
+export IPPROOT="C:\Program Files (x86)\Intel\Composer XE 2013\ipp"
+export INTEL_LICENSE_FILE="C:\Program Files (x86)\Common Files\Intel\Licenses"
+export WindowsSdkDir_old="C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A"
+export Platform="X64"
+export CCP_SDK="C:\Program Files\Microsoft HPC Pack 2008 SDK"
+export TARGET_VS="vs2012"
+export Framework35Version="v3.5"
+export FrameworkVersion64="v4.0.30319"
+export VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC"
+
+export LIB="$LIB;C:\Program Files (x86)\Intel\Composer XE 2013\compiler\lib;C:\Program Files (x86)\Intel\Composer XE 2013\compiler\lib\intel64;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\LIB\amd64;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\ATLMFC\LIB\amd64;C:\Program Files (x86)\Windows Kits\8.0\lib\win8\um\x64;C:\Program Files (x86)\Intel\Composer XE 2013\ipp\lib\intel64;C:\Program Files (x86)\Intel\Composer XE 2013\ipp\..\compiler\lib\intel64;C:\Program Files (x86)\Intel\Composer XE 2013\mkl\lib\intel64;C:\Program Files (x86)\Intel\Composer XE 2013\compiler\lib\intel64;C:\Program Files (x86)\Intel\Composer XE 2013\tbb\bin\..\lib\intel64\vc11;"
+
+export TBB_BIN_DIR="C:\Program Files (x86)\Intel\Composer XE 2013\tbb\bin"
+
+export IFORT_COMPILER13="C:\Program Files (x86)\Intel\Composer XE 2013"
+
+export LIBPATH="$LIBPATH;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Windows\Microsoft.NET\Framework64\v3.5;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\LIB\amd64;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\ATLMFC\LIB\amd64;C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral;C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.VCLibs\11.0\References\CommonConfiguration\neutral;"
+
+export INTEL_DEV_REDIST="C:\Program Files (x86)\Common Files\Intel\Shared Libraries"
+
+export PATH="/usr/bin:$PATH:/cygdrive/c/Program Files (x86)/XEmacs/XEmacs-21.4.22/i586-pc-win32/:/usr/local/bin:/usr/bin:/cygdrive/c/Program Files (x86)/Intel/Composer XE 2013/bin/intel64:/cygdrive/c/Program Files (x86)/Intel/Composer XE 2013/redist/intel64/compiler:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/IDE/CommonExtensions/Microsoft/TestWindow:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 11.0/VC/BIN/amd64:/cygdrive/c/Windows/Microsoft.NET/Framework64/v4.0.30319:/cygdrive/c/Windows/Microsoft.NET/Framework64/v3.5:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 11.0/VC/VCPackages:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/IDE:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/Tools:/cygdrive/c/Program Files (x86)/HTML Help Workshop:/cygdrive/c/Program Files (x86)/HTML Help Workshop:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 11.0/Team Tools/Performance Tools/x64:/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 11.0/Team Tools/Performance Tools:/cygdrive/c/Program Files (x86)/Windows Kits/8.0/bin/x64:/cygdrive/c/Program Files (x86)/Windows Kits/8.0/bin/x86:/cygdrive/c/Program Files (x86)/Microsoft SDKs/Windows/v8.0A/bin/NETFX 4.0 Tools/x64:/cygdrive/c/Program Files (x86)/Microsoft SDKs/Windows/v7.0A/bin/x64:/cygdrive/c/Program Files (x86)/Microsoft SDKs/Windows/v8.0A/bin/NETFX 4.0 Tools:/cygdrive/c/Program Files (x86)/Microsoft SDKs/Windows/v7.0A/bin:/cygdrive/c/Program Files (x86)/Intel/Composer XE 2013/redist/intel64/ipp:/cygdrive/c/Program Files (x86)/Intel/Composer XE 2013/redist/intel64/compiler:/cygdrive/c/Program Files (x86)/Intel/Composer XE 2013/redist/intel64/mkl:/cygdrive/c/Program Files (x86)/Intel/Composer XE 2013/redist/intel64/compiler:/cygdrive/c/Program Files (x86)/Intel/Composer XE 2013/redist/intel64/tbb/vc11:/cygdrive/c/Program Files/Microsoft HPC Pack 2008 SDK/Bin:/cygdrive/c/Python27:/cygdrive/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64/mpirt:/cygdrive/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/ia32/mpirt:/cygdrive/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64/compiler:/cygdrive/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/ia32/compiler:/cygdrive/c/Perl64/site/bin:/cygdrive/c/Perl64/bin:/cygdrive/c/bin:/cygdrive/c/Program Files (x86)/blat310/full:/cygdrive/c/Windows/system32:/cygdrive/c/Windows:/cygdrive/c/Windows/System32/Wbem:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0:/cygdrive/c/Program Files/Intel/WiFi/bin:/cygdrive/c/Program Files/Common Files/Intel/WirelessCommon:/cygdrive/c/Program Files (x86)/CMake 2.8/bin:/cygdrive/c/Program Files/Microsoft/Web Platform Installer:/cygdrive/c/Program Files (x86)/Microsoft ASP.NET/ASP.NET Web Pages/v1.0:/cygdrive/c/Program Files (x86)/Windows Kits/8.0/Windows Performance Toolkit:/cygdrive/c/Program Files/Microsoft SQL Server/110/Tools/Binn:/cygdrive/c/Program Files (x86)/Intel/Composer XE 2013/redist/intel64/mpirt"
+
+export TARGET_ARCH="intel64"
+export FrameworkDIR64="C:\Windows\Microsoft.NET\Framework64"
+export TBBROOT="C:\Program Files (x86)\Intel\Composer XE 2013\tbb\bin\.."
+export FP_NO_HOST_CHECK="NO"
+export ARCH_PATH="intel64"
+export WIN_TITLE_VS="Visual Studio 2012"
+export FrameworkDir="C:\Windows\Microsoft.NET\Framework64"
+export WindowsSdkDir="C:\Program Files (x86)\Windows Kits\8.0"
+export CCP_INC="C:\Program Files\Microsoft HPC Pack 2008 SDK\Include"
+export ROOT="C:\Program Files (x86)\Intel\Composer XE 2013"
+export VisualStudioVersion="11.0"
+export TARGET_VS_ARCH="amd64"
+export PROCESSOR_ARCHITECTURE="x86"
+export IPP_TARGET_ARCH="intel64"
+export BIN_ROOT="C:\Program Files (x86)\Intel\Composer XE 2013\bin"
+export TMP="/tmp"
+export TBB_TARGET_ARCH="intel64"
+export TBB_ARCH_PLATFORM="intel64\vc11"
+export PRODUCT_NAME_FULL="Intel(R) Composer XE 2013 Update 2 (package 149)"
+export MSVS_VAR_SCRIPT="C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\..\..\VC\vcvarsall.bat"
+export WIN_TITLE_ARCH="Intel(R) 64"
+export C_TARGET_ARCH="intel64"
+export TBB_CXX="icl.exe"
+export ExtensionSdkDir="C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0\ExtensionSDKs"
+export ND_INC="C:\Program Files\Microsoft HPC Pack 2008 SDK\Include"
+export WindowsSdkDir_35="C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin"
+export PROGRAMFILES="C:\Program Files (x86)"
+export TBB_TARGET_VS="vc11"
+
+export VS110COMNTOOLS="C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools"
+
+export INCLUDE="$INCLUDE;C:\Program Files (x86)\Intel\Composer XE 2013\compiler\include;C:\Program Files (x86)\Intel\Composer XE 2013\compiler\include\intel64;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\INCLUDE;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\ATLMFC\INCLUDE;C:\Program Files (x86)\Windows Kits\8.0\include\shared;C:\Program Files (x86)\Windows Kits\8.0\include\um;C:\Program Files (x86)\Windows Kits\8.0\include\winrt;C:\Program Files (x86)\Intel\Composer XE 2013\ipp\include;C:\Program Files (x86)\Intel\Composer XE 2013\mkl\include;C:\Program Files (x86)\Intel\Composer XE 2013\tbb\bin\..\include;"
+
+export ICPP_COMPILER13="C:\Program Files (x86)\Intel\Composer XE 2013"
+export FrameworkVersion="v4.0.30319"
+export CCP_LIB32="C:\Program Files\Microsoft HPC Pack 2008 SDK\Lib\i386"
+export ARCH_PATH_MPI="em64t"
+
+##############################################################################
+
+# END KEEP THIS
+
+# Serial compilers
+# FC should be a compiler that compiles F77 or F90 but takes free format.
+# F77 should be a compiler that compiles F77 or F90 but takes fixed format.
+# Typically this means that both are the F90 compiler, and they figure out the
+# format from the file suffix.  The exception is the XL suite, where xlf
+# compiles F77 or F90, and expects fixed format, while xlf9x ignores
+# the suffix and looks for the -qfixed flag or else fails on fixed format.
+CC=${CC:-"cl"}
+CXX=${CXX:-"cl"}
+FC=${FC:-"ifort"}
+F77=${F77:-"ifort"}
+
+# Python builds -- much use gcc for consistency.
+PYC_CC=${PYC_CC:-"cl"}
+PYC_CXX=${PYC_CXX:-"cl"}
+
+# Backend compilers:
+BENCC=${BENCC:-"cl"}
+BENCXX=${BENCXX:-"cl"}
+BENFC=${BENFC:-"ifort"}
+BENF77=${BENF77:-"ifort"}
+
+# Parallel compilers:
+MPICC=${MPICC:-"cl"}
+MPICXX=${MPICXX:-"cl"}
+MPIFC=${MPIFC:-"ifort"}
+MPIF77=${MPIF77:-"ifort"}
+
+# PYC flags:
+# PYC_LDFLAGS is for creating an executable.
+# PYC_MODFLAGS is for creating a module.
+# PYC_CFLAGS=${PYC_CFLAGS:-"-mno-cygwin"}
+# PYC_CXXFLAGS=${PYC_CXXFLAGS:-"-mno-cygwin"}
+# PYC_FCFLAGS=${PYC_FCFLAGS:-"-mno-cygwin"}
+# PYC_FFLAGS=${PYC_FFLAGS:-"-mno-cygwin"}
+
+LAPACK_BUILDS=${LAPACK_BUILDS:-"NONE"}
+
+#HDF5_PAR_OTHER_ARGS=${HDF5_PAR_OTHER_ARGS:-"-DBUILD_SHARED_LIBS:BOOL=OFF -DMSVC:BOOL=TRUE -DHDF5_BUILD_FORTRAN:BOOL=OFF"}
+#HDF5_PARSH_OTHER_ARGS=${HDF5_PARSH_OTHER_ARGS:-" -DMSVC:BOOL=TRUE -DHDF5_BUILD_FORTRAN:BOOL=OFF"}
+#HDF5_SER_OTHER_ARGS=${HDF5_SER_OTHER_ARGS:-"-DBUILD_SHARED_LIBS:BOOL=OFF -DMSVC:BOOL=TRUE CMAKE_Fortran_FLAGS:STRING='/fltconsistency /Qprec' -DHDF5_BUILD_FORTRAN:BOOL=OFF"}
+#HDF5_SERSH_OTHER_ARGS=${HDF5_SERSH_OTHER_ARGS:-" -DMSVC:BOOL=TRUE -DHDF5_BUILD_FORTRAN:BOOL=OFF"}
